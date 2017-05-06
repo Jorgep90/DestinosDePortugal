@@ -13,5 +13,13 @@ namespace DestinosDePortugal.Controllers
         {
             return View();
         }
+        public ActionResult Administrador()
+        {
+            return View();
+        }
+        public ActionResult Colaborador()
+        {
+            return View();
+        }
     }
 }
