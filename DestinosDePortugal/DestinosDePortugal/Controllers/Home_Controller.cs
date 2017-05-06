@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using DestinosDePortugal.Models;
 
 namespace DestinosDePortugal.Controllers
 {
@@ -15,7 +12,9 @@ namespace DestinosDePortugal.Controllers
         }
         public ActionResult Administrador()
         {
-            return View();
+            Users users = new Users();
+
+            return View(users.SelectById(1));
         }
         public ActionResult Colaborador()
         {
