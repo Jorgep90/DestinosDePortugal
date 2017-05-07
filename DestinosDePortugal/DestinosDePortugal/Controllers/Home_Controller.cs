@@ -12,9 +12,9 @@ namespace DestinosDePortugal.Controllers
         }
         public ActionResult Administrador()
         {
-            Users users = new Users();
+            Administrador admin = new Administrador();
 
-            return View(users.SelectById(1));
+            return View(admin.SelectById(1));
         }
         public ActionResult Colaborador()
         {

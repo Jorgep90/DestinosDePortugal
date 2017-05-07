@@ -1,23 +1,14 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data.SqlClient;
 
 namespace DestinosDePortugal.Models
 {
-    public class Users
+    public class Administrador
     {
-    
-        [Key]
-        public int ID { get; set; }
-        [Required]
-        public string nome { get; set; }
-        public int idade { get; set; }
-        public string local { get; set; }
-
-        public Users SelectById(int id) {
+        public Users SelectById(int id)
+        {
             var conn = ConfigurationManager.ConnectionStrings["connection"].ToString();
-              //  SqlConnection("Server=DESKTOP-ATP05MJ\\SQLSERVER;Database=DestPTdb;Trusted_Connection=Yes;");
 
             Users user = new Users();
             string query = "";
@@ -39,9 +30,22 @@ namespace DestinosDePortugal.Models
                 }
             }
             return user;
-                
-        
-
         }
+        public Users CreateUser(string nome, string idade, string local, string type) {
+
+            return null;
+        }
+
+        public Users ChangeUserTypeByid(int id, string type) {
+
+            return null;
+        }
+        public Users DeleteUserByid(int id) {
+
+            return null;
+        }
+
+
+
     }
 }
