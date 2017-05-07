@@ -22,6 +22,7 @@ namespace DestinosDePortugal.Models
                 {
                     while (oReader.Read())
                     {
+                        //teste
                         user.idade = Convert.ToInt32(oReader["idade"]);
                         user.nome = oReader["nome"].ToString();
                         user.local = oReader["local"].ToString();
