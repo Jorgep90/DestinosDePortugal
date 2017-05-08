@@ -6,13 +6,13 @@ namespace DestinosDePortugal.Models
 {
     public class Administrador
     {
-        public Users SelectById(int id)
+        public User SelectById(int id)
         {
-            var conn = ConfigurationManager.ConnectionStrings["connection"].ToString();
+           
 
-            Users user = new Users();
+            User user = new User();
             string query = "";
-            using (SqlConnection connection = new SqlConnection(conn))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ToString()))
             {
                 query = "Select * from Users where id=@id";
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -23,25 +23,25 @@ namespace DestinosDePortugal.Models
                     while (oReader.Read())
                     {
                         //teste
-                        user.idade = Convert.ToInt32(oReader["idade"]);
-                        user.nome = oReader["nome"].ToString();
-                        user.local = oReader["local"].ToString();
+                        user.UserName = oReader["Username"].ToString();
+                        user.Email = oReader["Email"].ToString();
+                        //user.RegDate = Convert.ToDateTime(oReader["local"]);
                     }
                     connection.Close();
                 }
             }
             return user;
         }
-        public Users CreateUser(string nome, string idade, string local, string type) {
+        public User CreateUser(string nome, string idade, string local, string type) {
 
             return null;
         }
 
-        public Users ChangeUserTypeByid(int id, string type) {
+        public User ChangeUserTypeByid(int id, string type) {
 
             return null;
         }
-        public Users DeleteUserByid(int id) {
+        public User DeleteUserByid(int id) {
 
             return null;
         }
