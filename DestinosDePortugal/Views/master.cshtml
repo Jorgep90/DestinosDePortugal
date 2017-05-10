@@ -19,13 +19,13 @@
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            @Html.ActionLink("Home", "Index")
+                            @Html.ActionLink("Home", "Index", "Home_", null, null)
                         </li>
                         <li class="active">
-                            @Html.ActionLink("Administrador", "Administrador")
+                            @Html.ActionLink("Administrador", "Administrador","Home_",null,null)
                         </li>
                         <li class="active">
-                            @Html.ActionLink("Colaborador", "Colaborador")
+                            @Html.ActionLink("Colaborador", "Colaborador", "Home_", null, null)
                         </li>
                         <li><a href="portfolio.html">Portfolio</a></li>
                         <li class="dropdown">
@@ -39,26 +39,22 @@
                         </li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact-us.html">Contact</a></li>
+                        @if (Request.IsAuthenticated)
+                        {
+
+                            <li>@Html.ActionLink("Logout", "Logout")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "Register","User_",null,null)</li>
+                            <li>@Html.ActionLink("Login", "Login", "User_", null, null)</li>
+                        }
                     </ul>
                 </div>
             </div>
         </nav>
 
     </header>
-    <div style="width: auto; background-color: #728ea7;">
-        @if (Request.IsAuthenticated)
-        {
-            <strong>@Html.Encode(User.Identity.Name)</strong>
-            @Html.ActionLink("Sign Out", "Logout", "User")
-        }
-        else
-        {
-            @Html.ActionLink("Register", "Register", "User")
-            <span> | </span>
-            @Html.ActionLink("Sign In", "Login", "User")
-        }
-    </div> 
-
     <div>
         @RenderBody()
     </div>

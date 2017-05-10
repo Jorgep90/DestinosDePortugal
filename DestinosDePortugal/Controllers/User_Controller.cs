@@ -10,12 +10,13 @@ namespace DestinosDePortugal.Controllers
     public class User_Controller : Controller
     {
         // GET: User_
-        public ActionResult Index()
+       
+        [HttpGet]
+        public ActionResult Login()
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult Login()
+        public ActionResult Register()
         {
             return View();
         }
@@ -28,7 +29,7 @@ namespace DestinosDePortugal.Controllers
                 if (user.IsValid(user.UserName, user.Password))
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, user.RememberMe);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index","Home_");
                 }
                 else
                 {
@@ -36,6 +37,17 @@ namespace DestinosDePortugal.Controllers
                 }
             }
             return View(user);
+        }
+        [HttpPost]
+        [ActionName("register")]
+        public ActionResult Register(Models.User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.Create(user);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Logout()
         {

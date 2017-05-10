@@ -119,6 +119,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Ingles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ingles.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Portugues.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Portugues.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Home_Controller.cs" />
     <Compile Include="Controllers\User_Controller.cs" />
@@ -135,12 +145,15 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home_\Index.cshtml" />
+    <Content Include="Views\Home_\Index.cshtml">
+      <BrowseToURL>~/Index.cshtml</BrowseToURL>
+    </Content>
     <Content Include="Views\master.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Home_\Administrador.cshtml" />
     <Content Include="Views\Home_\Colaborador.cshtml" />
     <Content Include="Views\User_\Login.cshtml" />
+    <Content Include="Views\User_\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +163,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Portugues.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Portugues.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Ingles.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Ingles.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -40,7 +40,7 @@ namespace DestinosDePortugal.Models
                 cmd.Parameters
                     .Add(new SqlParameter("@p", SqlDbType.NVarChar))
                      .Value = Helpers.SHA1_Encode(_password);
-                
+
                 cn.Open();
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -56,6 +56,24 @@ namespace DestinosDePortugal.Models
                     return false;
                 }
             }
+        }
+        public void Create(User user)
+        {
+            // INSERT INTO[dbo].[Users] ([Username],[Password],[RegDate],[Email])VALUES('username','password','regdate','email' )            
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ToString()))
+            {
+               string query = "INSERT INTO[dbo].[Users] ([Username],[Password],[Email])VALUES(@Username,@Password,@Email)";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Username", user.UserName);
+                    cmd.Parameters.AddWithValue("@Password", Helpers.SHA1_Encode(user.Password));
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+                     
         }
     }
 }
